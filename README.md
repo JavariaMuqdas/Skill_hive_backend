@@ -1,64 +1,93 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# SkillHive
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A skill-driven hiring platform that connects students, companies, and admins through a two-phase matching algorithm — scoring candidates against real job and internship requirements instead of relying on keyword-matched resumes.
 
-## About Laravel
+**Final Year Project** — React JS · Laravel · MySQL
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## What it does
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+SkillHive rethinks how students find internships and jobs by matching them to roles based on verified skills, not just applications sent into a void.
 
-## Learning Laravel
+- **Students** build a skill-based profile and get matched to relevant roles
+- **Companies** post jobs/internships and receive a ranked shortlist of candidates scored against their requirements
+- **Admins** verify companies (via FBR/SECP checks) and oversee platform integrity
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Core features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- 🎯 **Two-phase skill-matching algorithm** — scores and ranks candidates against job requirements
+- 🏢 **Company verification** — FBR/SECP-based checks to keep listings legitimate
+- 📅 **Interview scheduling** — built-in coordination between companies and shortlisted candidates
+- 🎓 **Scholarship Module** — a dedicated track for scholarship opportunities alongside jobs
+- 🔐 **Role-based access** — separate, tailored experiences for Student / Company / Admin
+- 📱 **Fully responsive** — sticky filter sidebar and consistent layout across breakpoints
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Tech stack
 
-### Premium Partners
+| Layer | Technology |
+|---|---|
+| Frontend | React JS |
+| Backend | Laravel (REST API) |
+| Database | MySQL |
+| Auth | Role-based authentication |
+| Deployment | Nginx, Ubuntu VPS |
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+---
 
-## Contributing
+## How the matching works
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Student builds a profile listing their skills
+2. Company posts a role with required skills
+3. The matching engine scores each student against the role's requirements
+4. Ranked candidates surface to the company
+5. Company shortlists top matches
+6. Interview is scheduled, offer is made
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Local setup
 
-## Security Vulnerabilities
+```bash
+# Clone the repo
+git clone https://github.com/JavariaMuqdas/skillhive.git
+cd skillhive
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Backend (Laravel)
+cd backend
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
+
+# Frontend (React)
+cd ../frontend
+npm install
+npm start
+```
+
+> Update `.env` with your local MySQL credentials before running migrations.
+
+---
+
+## Deployment notes
+
+Deployed on an Ubuntu VPS with:
+- Nginx running two server blocks — frontend on port 80, Laravel API on port 8001
+- CORS configured between frontend and API
+- SSH-based deployment workflow
+
+---
+
+## Team
+
+Built as a Final Year Project by **Javaria Muqadas**, along with Mehrab and Kashaf Ruba, under the supervision of **Sir Nasir Siddiqui**.
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project was built for academic purposes as part of a university Final Year Project.
